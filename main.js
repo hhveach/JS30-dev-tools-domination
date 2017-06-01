@@ -40,7 +40,35 @@ console.assert(p.classList.contains('nope'), 'WRONG AGAIN IDIOT');
 console.dir(p);
 
 // Grouping together
+dogs.forEach(dog => {
+  // console.group(dog.name);
+  console.groupCollapsed(dog.name);
+  console.log(`This is ${dog.name}`);
+  console.log(`${dog.name} is ${dog.age} years old`);
+  console.log(`${dog.name} is ${dog.age * 7} years old in dog years`);
+  console.groupEnd(dog.name);
+});
 
 // counting
+console.count('Hank');
+console.count('Hank');
+console.count('Hank');
+console.count('Babo');
+console.count('Hank');
+console.count('Hank');
+console.count('Babo');
+console.count('Babo');
+console.count('Hank');
+console.count('Hank');
+
 
 // timing
+console.time('fetching');
+fetch('https://api.github.com/users/hhveach')
+  .then(data => data.json())
+  .then(data => {
+    console.timeEnd('fetching');
+    console.log(data);
+  });
+
+console.table(dogs);
